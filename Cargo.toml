@@ -1,0 +1,26 @@
+[package]
+name = "falling_sand_playground"
+version = "0.1.0"
+edition = "2021"
+description = "A simple game where circles bounce when clicked"
+authors = ["Your Name <your.email@example.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bevy = "0.12.1"  # Use the latest stable version (check for updates)
+rand = "0.8.5"
+
+# Enable a small amount of optimization in debug mode
+[profile.dev]
+opt-level = 1
+
+# Enable high optimizations for dependencies (incl. Bevy), but not for our code
+[profile.dev.package."*"]
+opt-level = 3
+
+# Full optimizations for release builds
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
